@@ -3,9 +3,17 @@ import catchAsync from "./../utility/catchAsync.js";
 import AppError from "./../utility/appError.js";
 
 export const getAllUser = catchAsync(async (req, res, next) => {
-  const user = await User.find().populate({
-    path: "posts",
-  });
+  const user = await User.find()
+    .populate({
+      path: "posts",
+    })
+    .populate({
+      path: "questions",
+    });
+
+  //make sure that only admin colud access the users
+  user.password = undefined;
+
   res.status(200).json({
     status: "success",
     data: user,
@@ -13,9 +21,17 @@ export const getAllUser = catchAsync(async (req, res, next) => {
 });
 
 export const getUser = catchAsync(async (req, res, next) => {
-  const user = await User.findOne();
+  const user = await User.find({ _id: req.params.id })
+    .populate({
+      path: "posts",
+    })
+    .populate({
+      path: "questions",
+    });
 
   if (!user) return next(new AppError("the user does not exist", 400));
+
+  user.password = undefined;
 
   res.status(200).json({
     status: "success",

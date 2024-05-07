@@ -56,11 +56,11 @@ userSchema.virtual("posts", {
   localField: "_id",
 });
 
-// userSchema.virtual("answers", {
-//   ref: "answers",
-//   foreignField: "post",
-//   localField: "posts",
-// });
+userSchema.virtual("questions", {
+  ref: "questions",
+  foreignField: "user",
+  localField: "_id",
+});
 
 // userSchema.pre(/^find/, function () {
 

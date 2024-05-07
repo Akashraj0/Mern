@@ -1,8 +1,3 @@
-// const { promisify } = require("util");
-// const JWT = require("jsonwebtoken");
-// const User = require("");
-// const catchAsync = require("../utility/catchAsync");
-// const AppError = require("../utility/appError");
 import { promisify } from "util";
 import JWT from "jsonwebtoken";
 import User from "../models/userModel.js";
@@ -24,6 +19,8 @@ const createSendToken = (user, statuscode, res) => {
     ),
     httpOnly: true,
   };
+
+  user.password = undefined;
 
   res.cookie("jwt", token, cookieOptions);
 
