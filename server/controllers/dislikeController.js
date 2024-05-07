@@ -1,25 +1,20 @@
 import DisLike from "../models/dislikeModel.js";
+import Post from "../models/postModel.js";
 
 export const updatePostDisLike = async (req, res, next) => {
   try {
-    // Retrieve the post ID from the request parameters
     const postId = req.params.id;
+    const userId = req.user._id;
 
-    // Retrieve the user ID from the request body (assuming it's included in the request)
-    const userId = req.user._id; // Assuming the user ID is available in req.user._id
-
-    // Check if the user ID is provided
     if (!userId) {
       return res.status(400).json({
         status: "fail",
-        message: "User ID is required to dislike a post.",
+        message: "User ID is required to like a post.",
       });
     }
 
-    // Find the post by ID
-    const post = await DisLike.findById(postId);
+    const post = await Post.findById(postId);
 
-    // Check if the post exists
     if (!post) {
       return res.status(404).json({
         status: "fail",
@@ -27,30 +22,31 @@ export const updatePostDisLike = async (req, res, next) => {
       });
     }
 
-    // Check if the user already liked the post
-    if (post.dislike.userdisLiked.includes(userId)) {
-      return res.status(400).json({
-        status: "fail",
-        message: "User already disLiked the post.",
+    let dislike = await DisLike.findOne({ post: postId });
+
+    if (!dislike) {
+      dislike = new DisLike({
+        post: postId,
+        dislike: { userdisLiked: [userId], count: 1 },
       });
+    } else {
+      if (dislike.dislike.userdisLiked.includes(userId)) {
+        return res.status(400).json({
+          status: "fail",
+          message: "User already liked the post.",
+        });
+      }
+      dislike.dislike.userdisLiked.push(userId);
+      dislike.dislike.count += 1;
     }
 
-    // Add the user ID to the list of users who liked the post
-    post.dislike.userdisLiked.push(userId);
+    await dislike.save();
 
-    // Increment the number of likes
-    post.dislike.count += 1;
-
-    // Save the updated post
-    await post.save();
-
-    // Return the updated post
     res.status(200).json({
       status: "success",
-      data: post,
+      data: dislike,
     });
   } catch (error) {
-    // Handle errors
     console.error(error);
     res.status(500).json({
       status: "error",
@@ -61,52 +57,41 @@ export const updatePostDisLike = async (req, res, next) => {
 
 export const deletePostDisLike = async (req, res, next) => {
   try {
-    // Retrieve the post ID from the request parameters
     const postId = req.params.id;
+    const userId = req.user._id;
 
-    // Retrieve the user ID from the request body (assuming it's included in the request)
-    const userId = req.user._id; // Assuming the user ID is available in req.user._id
-
-    // Check if the user ID is provided
     if (!userId) {
       return res.status(400).json({
         status: "fail",
-        message: "User ID is required to dislike a post.",
+        message: "User ID is required to unlike a post.",
       });
     }
 
-    // Find the post by ID
-    const post = await DisLike.findById(postId);
+    const dislike = await DisLike.findOne({ post: postId });
 
-    // Check if the post exists
-    if (!post) {
+    if (
+      !dislike ||
+      !dislike.dislike.userdisLiked ||
+      !dislike.dislike.userdisLiked.includes(userId)
+    ) {
       return res.status(404).json({
         status: "fail",
-        message: "Post not found.",
+        message: "dislike not found or user hasn't disliked the post.",
       });
     }
 
-    // Construct a new array excluding the user ID
-    const updatedDislikedUsers = post.dislike.userdisLiked.filter(
+    dislike.dislike.userdisLiked = dislike.dislike.userdisLiked.filter(
       (id) => id.toString() !== userId.toString()
     );
+    dislike.dislike.count -= 1;
 
-    // Update the userdisLiked array with the new array
-    post.dislike.userdisLiked = updatedDislikedUsers;
+    await dislike.save();
 
-    // Increment the number of likes
-    post.dislike.count -= 1;
-
-    // Save the updated post
-    await post.save();
-
-    // Return the updated post
     res.status(200).json({
       status: "success",
-      data: post,
+      data: dislike,
     });
   } catch (error) {
-    // Handle errors
     console.error(error);
     res.status(500).json({
       status: "error",

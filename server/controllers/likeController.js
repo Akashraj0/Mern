@@ -21,19 +21,22 @@ export const updatePostLike = async (req, res, next) => {
       });
     }
 
-    let like = await Like.findOne({ postId });
+    let like = await Like.findOne({ post: postId });
 
     if (!like) {
-      like = new Like({ post: postId, userLiked: [userId], count: 1 });
+      like = new Like({
+        post: postId,
+        like: { userLiked: [userId], count: 1 },
+      });
     } else {
-      if (like.userLiked.includes(userId)) {
+      if (like.like.userLiked.includes(userId)) {
         return res.status(400).json({
           status: "fail",
           message: "User already liked the post.",
         });
       }
-      like.userLiked.push(userId);
-      like.count += 1;
+      like.like.userLiked.push(userId);
+      like.like.count += 1;
     }
 
     await like.save();
@@ -53,54 +56,41 @@ export const updatePostLike = async (req, res, next) => {
 
 export const deletePostLike = async (req, res, next) => {
   try {
-    // Retrieve the post ID from the request parameters
     const postId = req.params.id;
+    const userId = req.user._id;
 
-    // Retrieve the user ID from the request body (assuming it's included in the request)
-    const userId = req.user._id; // Assuming the user ID is available in req.user._id
-
-    // Check if the user ID is provided
     if (!userId) {
       return res.status(400).json({
         status: "fail",
-        message: "User ID is required to like a post.",
+        message: "User ID is required to unlike a post.",
       });
     }
 
-    // Find the post by ID
-    const post = await Like.findById(postId);
+    const like = await Like.findOne({ post: postId });
 
-    // Check if the post exists
-    if (!post) {
+    if (
+      !like ||
+      !like.like.userLiked ||
+      !like.like.userLiked.includes(userId)
+    ) {
       return res.status(404).json({
         status: "fail",
-        message: "Post not found.",
+        message: "Like not found or user hasn't liked the post.",
       });
     }
 
-    // Add the user ID to the list of users who liked the post
-
-    const like = await Like.find();
-
-    const updateLikedUsers = like.like.userLiked.filter(
+    like.like.userLiked = like.like.userLiked.filter(
       (id) => id.toString() !== userId.toString()
     );
-
-    like.like.userLiked = updateLikedUsers;
-
-    // Increment the number of likes
     like.like.count -= 1;
 
-    // Save the updated post
     await like.save();
 
-    // Return the updated post
     res.status(200).json({
       status: "success",
       data: like,
     });
   } catch (error) {
-    // Handle errors
     console.error(error);
     res.status(500).json({
       status: "error",

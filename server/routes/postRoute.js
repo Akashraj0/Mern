@@ -25,9 +25,4 @@ router
   .patch(protect, updatePost)
   .delete(protect, deletePost);
 
-router.route("/like/:id").patch(protect, updatePostLike);
-router.route("/dislike/:id").patch(protect, updatePostDisLike);
-
-router.route("/like/delete/:id").patch(protect, deletePostLike);
-router.route("/dislike/delete/:id").patch(protect, deletePostDisLike);
 export default router;
