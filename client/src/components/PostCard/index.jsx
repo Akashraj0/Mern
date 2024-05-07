@@ -13,21 +13,14 @@ const initialState = {
   disliked: false,
 };
 
-const likeFunction = async (postId) => {
-  return await axios.patch(`/post/like/${postId}`);
-};
-
-const dislikeFunction = async (postId) => {
-  return await axios.patch(`/post/dislike/${postId}`);
-};
-
-const likeFunctionD = async (postId) => {
-  return await axios.patch(`/post/like/delete/${postId}`);
-};
-
-const dislikeFunctionD = async (postId) => {
-  return await axios.patch(`/post/dislike/delete/${postId}`);
-};
+const likeFunction = async (postId) =>
+  await axios.patch(`/sign/like/${postId}`, {});
+const dislikeFunction = async (postId) =>
+  await axios.patch(`/sign/dislike/${postId}`, {});
+const likeFunctionD = async (postId) =>
+  await axios.patch(`/sign/like/delete/${postId}`, {});
+const dislikeFunctionD = async (postId) =>
+  await axios.patch(`/sign/dislike/delete/${postId}`, {});
 
 const reducer = (state, action) => {
   const { postId } = action;
@@ -166,7 +159,7 @@ const PostCard = ({ data }) => {
                 }}
               >
                 <FontAwesomeIcon icon={faThumbsUp} />
-                Like ({likes})
+                Like ({item?.likes[0]?.like?.count})
               </button>
               <button
                 className={disliked ? "disliked" : ""}
@@ -175,7 +168,7 @@ const PostCard = ({ data }) => {
                 }}
               >
                 <FontAwesomeIcon icon={faThumbsDown} />
-                Dislike ({dislikes})
+                Dislike ({item?.dislikes[0]?.dislike?.count})
               </button>
             </div>
             <CommentCard item={item} index={i} />

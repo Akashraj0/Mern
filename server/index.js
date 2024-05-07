@@ -10,6 +10,7 @@ import postRouter from "./routes/postRoute.js";
 import commentRouter from "./routes//commentRoute.js";
 import globalErrorHandler from "./controllers/errorController.js";
 import signRouter from "./routes/ldRouter.js";
+import questionRouter from "./routes/questionRouter.js";
 const app = express();
 
 app.use(
@@ -34,6 +35,7 @@ mongoose.connect(DB).then(() => {
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/answers", answerRouter);
 app.use("/api/v1/post", postRouter);
+app.use("/api/v1/question", questionRouter);
 app.use("/api/v1/comments", commentRouter);
 app.use("/api/v1/sign", signRouter);
 app.listen(8000, () => {

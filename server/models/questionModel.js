@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
-import validator from "validator";
+// import validator from "validator";
 // const validator = require("validator");
-const postSchema = mongoose.Schema(
+const QuestionShema = mongoose.Schema(
   {
     title: {
       type: String,
       required: [true, "Please provide the description"],
     },
-    post: {
+    question: {
       type: String,
       required: [true, "Please provide the description"],
       minlength: [30, "The paragraph must have minimum of 20 words"],
@@ -29,32 +29,19 @@ const postSchema = mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-postSchema.index({ user: 1, like: 1 }, { unique: 1 });
-postSchema.index({ user: 1, dislike: 1 }, { unique: 1 });
-postSchema.virtual("comments", {
-  ref: "comments",
-  foreignField: "post",
+
+QuestionShema.virtual("answers", {
+  ref: "answers",
+  foreignField: "question",
   localField: "_id",
 });
 
-postSchema.virtual("likes", {
-  ref: "likes",
-  foreignField: "post",
-  localField: "_id",
+QuestionShema.pre(/^find/, function () {
+  this.populate({ path: "user", select: "name photo" }).populate({
+    path: "answers",
+  });
 });
 
-postSchema.virtual("dislikes", {
-  ref: "dislikes",
-  foreignField: "post",
-  localField: "_id",
-});
+const Question = mongoose.model("questions", QuestionShema);
 
-postSchema.pre(/^find/, function () {
-  this.populate({ path: "user", select: "name photo" })
-    .populate({ path: "likes" })
-    .populate({ path: "dislikes" });
-});
-
-const Post = mongoose.model("posts", postSchema);
-
-export default Post;
+export default Question;

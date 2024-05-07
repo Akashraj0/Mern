@@ -22,7 +22,7 @@ const Login = () => {
     console.log(result);
     console.log(result?.data?.data);
     login(result?.data?.data);
-    navigate("/post");
+    navigate("/home");
   };
 
   const handleSwitch = () => {
@@ -30,49 +30,52 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <form
-        className={isLogin ? "active" : ""}
-        onSubmit={(e) => {
-          submitHandler(e);
-        }}
-      >
-        <h2>Login</h2>
-        <input
-          type="email"
-          placeholder="email"
-          required
-          value={data.email}
-          onChange={(e) => {
-            setData({ ...data, email: e.target.value });
+    <div className="login">
+      <div className="container">
+        <form
+          className={isLogin ? "active" : ""}
+          onSubmit={(e) => {
+            submitHandler(e);
           }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          value={data.password}
-          onChange={(e) => {
-            setData({ ...data, password: e.target.value });
-          }}
-        />
-        <button type="submit">Login</button>
-      </form>
-      <form className={!isLogin ? "active" : ""}>
-        <h2>Signup</h2>
-        <input type="text" placeholder="Username" required />
-        <input type="password" placeholder="Password" required />
-        <input type="password" placeholder="Confirm Password" required />
-        <button type="submit">Signup</button>
-      </form>
-      <div className="switch">
-        <input
-          type="checkbox"
-          id="switch-toggle"
-          onChange={handleSwitch}
-          checked={isLogin}
-        />
-        <label htmlFor="switch-toggle" className="switch-label"></label>
+        >
+          <h2>Login</h2>
+          <input
+            type="email"
+            placeholder="email"
+            required
+            value={data.email}
+            onChange={(e) => {
+              setData({ ...data, email: e.target.value });
+            }}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            value={data.password}
+            onChange={(e) => {
+              setData({ ...data, password: e.target.value });
+            }}
+          />
+          <button type="submit">Login</button>
+        </form>
+        <form className={!isLogin ? "active" : ""}>
+          <h2>Signup</h2>
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <input type="password" placeholder="Confirm Password" required />
+          <button type="submit">Signup</button>
+        </form>
+        <div className="switch">
+          <p>Login/Signin</p>
+          <input
+            type="checkbox"
+            id="switch-toggle"
+            onChange={handleSwitch}
+            checked={isLogin}
+          />
+          <label htmlFor="switch-toggle" className="switch-label"></label>
+        </div>
       </div>
     </div>
   );

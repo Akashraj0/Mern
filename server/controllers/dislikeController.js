@@ -67,6 +67,15 @@ export const deletePostDisLike = async (req, res, next) => {
       });
     }
 
+    const post = await Post.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Post not found.",
+      });
+    }
+
     const dislike = await DisLike.findOne({ post: postId });
 
     if (

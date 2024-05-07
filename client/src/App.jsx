@@ -1,8 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Post from "./pages/Posts";
+import Home from "./pages/Home";
 import axios from "axios";
 import { UserProvider } from "./components/UserContext";
+import QuestionForm from "./pages/Questions";
 axios.defaults.baseURL = "http://localhost:8000/api/v1/";
 axios.defaults.withCredentials = true;
 
@@ -11,8 +13,10 @@ const App = () => {
     <div>
       <UserProvider>
         <Routes>
-          <Route index path="/home" element={<Login />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/post" element={<Post />} />
+          <Route path="/ques" element={<QuestionForm />} />
         </Routes>
       </UserProvider>
     </div>

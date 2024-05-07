@@ -7,13 +7,12 @@ const answerSchema = mongoose.Schema(
       minlength: [5, "The paragraph must have minimum of 20 words"],
       maxlength: [300, "The paragraph must have maximum of 150 words"],
     },
-    image: String,
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "user",
       required: [true, "Answer must belong to a user"],
     },
-    post: {
+    question: {
       type: mongoose.Schema.ObjectId,
       ref: "posts",
       required: [true, "Answer must belong to a Question"],

@@ -8,10 +8,6 @@ import {
   userImageUpload,
   resizeUserPhoto,
   postPost,
-  updatePostLike,
-  updatePostDisLike,
-  deletePostDisLike,
-  deletePostLike,
 } from "../controllers/postController.js";
 const router = express.Router();
 router
