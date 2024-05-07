@@ -1,0 +1,20 @@
+button {
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  svg {
+    margin-right: 5px;
+  }
+
+  &.liked,
+  &.disliked {
+    background-color: #f0f0f0;
+  }
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+}

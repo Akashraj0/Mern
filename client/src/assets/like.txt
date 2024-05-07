@@ -1,0 +1,29 @@
+  // const handleLike = async (item) => {
+  //   // Increment the like count locally
+  //   item.like += 1;
+  //   try {
+  //     // Send a PATCH request to update the like count on the server
+  //     const result = await axios.patch(`/post/${item.id}`, {
+  //       like: item.like,
+  //     });
+  //     console.log(result); // Log the result of the PATCH request
+  //   } catch (error) {
+  //     console.error("Error updating like count:", error);
+  //     // Handle error if needed
+  //   }
+  // };
+
+  // const handelDislike = async (item) => {
+  //   // Increment the like count locally
+  //   item.dislike += 1;
+  //   try {
+  //     // Send a PATCH request to update the like count on the server
+  //     const result = await axios.patch(`/post/${item.id}`, {
+  //       dislike: item.dislike,
+  //     });
+  //     console.log(result); // Log the result of the PATCH request
+  //   } catch (error) {
+  //     console.error("Error updating like count:", error);
+  //     // Handle error if needed
+  //   }
+  // };

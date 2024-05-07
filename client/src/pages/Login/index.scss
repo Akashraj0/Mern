@@ -1,0 +1,89 @@
+// body {
+//   font-family: Arial, sans-serif;
+//   background-color: #f0f0f0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+//   margin: 0;
+// }
+
+.container {
+  background-color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  position: relative;
+}
+
+form {
+  display: none;
+}
+
+form.active {
+  display: block;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+input[type="email"],
+input[type="password"],
+button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.switch-label {
+  display: block;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.switch-label:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked + .switch-label {
+  background-color: #007bff;
+}
+
+input[type="checkbox"]:checked + .switch-label:before {
+  left: calc(100% - 0px);
+  transform: translateX(-100%);
+}
