@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-// import Logo from "../../assets/Logo.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "./index.scss";
 const Home = () => {
   return (
@@ -19,11 +19,27 @@ const Home = () => {
         </div>
       </nav>
       <div className="Container">
-        <div className="box">
-          <Link to="/post">Post</Link>
+        <div className="feature">
+          <h2>Forum Posts</h2>
+          <p>
+            Share your insights, experiences, and ideas with the community by
+            creating forum posts. Connect with others and contribute to
+            discussions on various topics.
+          </p>
+          <a href="/post" className="btn primary">
+            Start Posting <FontAwesomeIcon icon={faArrowRight} />
+          </a>
         </div>
-        <div className="box">
-          <Link to="/ques">Question</Link>
+        <div className="feature">
+          <h2>Questions</h2>
+          <p>
+            Have a burning question? Ask the community and get answers from
+            experts and peers. Benefit from collective knowledge and find
+            solutions to your queries.
+          </p>
+          <a href="/question" className="btn secondary">
+            Ask a Question <FontAwesomeIcon icon={faArrowRight} />
+          </a>
         </div>
       </div>
     </div>

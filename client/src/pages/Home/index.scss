@@ -21,6 +21,9 @@ nav {
 
       li {
         text-decoration: none;
+        color: black;
+        font-weight: 800;
+        font-size: 18px;
       }
     }
   }
@@ -29,6 +32,9 @@ nav {
     p {
       display: flex;
       justify-content: flex-end;
+      color: black;
+      font-weight: 800;
+      font-size: 18px;
     }
   }
 }
@@ -37,15 +43,105 @@ nav {
   margin-top: 200px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
 
   .box {
-    width: 50%;
+    width: 100%;
     min-height: 400px;
+    text-align: center;
   }
 
   a {
     text-decoration: none;
     color: white;
+  }
+}
+
+.feature {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 200px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+
+    &.primary {
+      background-color: #007bff;
+      color: #fff;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+
+    &.secondary {
+      background-color: #28a745;
+      color: #fff;
+
+      &:hover {
+        background-color: #218838;
+      }
+    }
+
+    svg {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.cta {
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #777;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 200px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &.primary {
+      background-color: #007bff;
+      color: #fff;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+
+    svg {
+      margin-left: 0.5rem;
+    }
   }
 }

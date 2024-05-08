@@ -31,6 +31,21 @@ const Login = () => {
 
   return (
     <div className="login">
+      <div className="homepage">
+        <div>
+          <h1>Welcome to Our Forum!</h1>
+          <p>
+            Join our community to share knowledge, ask questions, and engage
+            with fellow enthusiasts.
+          </p>
+          <div className="cta">
+            <p>
+              Ready to dive in? Sign up now to start posting and asking
+              questions!
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="container">
         <form
           className={isLogin ? "active" : ""}

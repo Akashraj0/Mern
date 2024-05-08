@@ -1,5 +1,7 @@
 .login {
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
 .container {
@@ -38,7 +40,7 @@ button {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #000;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -83,10 +85,78 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked + .switch-label {
-  background-color: #007bff;
+  background-color: #000;
 }
 
 input[type="checkbox"]:checked + .switch-label:before {
   left: calc(100% - 0px);
   transform: translateX(-100%);
+}
+
+.homepage {
+  position: absolute;
+  text-align: center;
+  left: 110px;
+  margin: 240px auto auto auto;
+  color: #000;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+  }
+
+  .feature {
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      background-color: #000;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  .cta {
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      background-color: #28a745;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #218838;
+      }
+    }
+  }
 }
