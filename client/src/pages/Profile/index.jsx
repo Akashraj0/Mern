@@ -3,7 +3,7 @@ import axios from "axios";
 import { useUser } from "../../components/UserContext";
 
 import "./index.scss";
-import QuestionCard from "../../components/QuestionCard";
+// import QuestionCard from "../../components/QuestionCard";
 import UserPost from "../../components/UserPost";
 import UserQuestion from "../../components/UserQuestion";
 const Profile = () => {
@@ -21,13 +21,21 @@ const Profile = () => {
   }, []);
   // console.log(data[0]?.posts);
   return (
-    <div>
-      <p style={{ color: "white" }}>{data[0]?.name}</p>
-      <div className="post">
-        <UserPost data={data[0]?.posts} />
+    <div className="Profile">
+      <div className="nav-profile">
+        <ul>
+          <li>Posts</li>
+          <li>Question</li>
+          <li>About Me</li>
+        </ul>
       </div>
       <div>
-        <UserQuestion data={data[0]?.questions} />
+        <div className="post">
+          <UserPost data={data[0]?.posts} />
+        </div>
+        <div className="post">
+          <UserQuestion data={data[0]?.questions} />
+        </div>
       </div>
     </div>
   );

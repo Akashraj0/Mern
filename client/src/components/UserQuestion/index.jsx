@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./index.scss";
+import Answer from "./Answer";
 const UserQuestion = (data) => {
   const [expandedPostIndex, setExpandedPostIndex] = useState(null);
 
@@ -42,7 +43,7 @@ const UserQuestion = (data) => {
                 alt="Image Description"
               />
             </div>
-            {/* <AnswerCard item={item} index={i} /> */}
+            <Answer item={item} index={i} />
           </div>
         ))
       ) : (

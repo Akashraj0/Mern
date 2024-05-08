@@ -1,7 +1,5 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-
-import "./index.css";
 import AnswerCard from "../AnswerCard";
 
 const QuestionCard = ({ data }) => {
