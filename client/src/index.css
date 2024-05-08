@@ -1,8 +1,8 @@
-body{
-    background-color:#003366;
-    /* background-color: #fff; */
-    /* background-image: url("./assets/background.jpg");
+body {
+    /* background-color:#003366; */
+    /* background-color: #fff;  */
+    background-image: url("./assets/back/3d-rendering-people-avatars-zoom-call.jpg");
     background-repeat: repeat;
-    background-size:contain; */
-    color: white;
+    background-size: cover; /* This will cover the entire body background */
+    /* color: white; */
 }
