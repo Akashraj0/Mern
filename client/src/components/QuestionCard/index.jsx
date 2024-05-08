@@ -5,7 +5,7 @@ import "./index.css";
 import AnswerCard from "../AnswerCard";
 
 const QuestionCard = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   const [expandedPostIndex, setExpandedPostIndex] = useState(null);
 
   const togglePostExpansion = (index) => {
@@ -18,7 +18,7 @@ const QuestionCard = ({ data }) => {
 
   return (
     <div>
-      {Array.isArray(data?.data) ? (
+      {Array.isArray(data?.data) || Array.isArray(data) ? (
         data?.data?.map((item, i) => (
           <div key={i} className="post-grid">
             <div className="post-title" style={{ color: "black" }}>

@@ -6,6 +6,9 @@ export const getAllUser = catchAsync(async (req, res, next) => {
   const user = await User.find()
     .populate({
       path: "posts",
+      populate: {
+        path: "comments", // Populate comments within posts
+      },
     })
     .populate({
       path: "questions",
@@ -24,6 +27,9 @@ export const getUser = catchAsync(async (req, res, next) => {
   const user = await User.find({ _id: req.params.id })
     .populate({
       path: "posts",
+      populate: {
+        path: "comments", // Populate comments within posts
+      },
     })
     .populate({
       path: "questions",

@@ -98,6 +98,7 @@ const reducer = (state, action) => {
 };
 
 const PostCard = ({ data }) => {
+  console.log(data);
   const [expandedPostIndex, setExpandedPostIndex] = useState(null);
   const [state, dispatch] = useReducer(reducer, initialState);
 
