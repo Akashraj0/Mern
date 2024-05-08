@@ -1,4 +1,51 @@
 .Home {
-  width: 50%;
-  margin: 250px auto;
+  width: 100%;
+  color: white;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .logo {
+    width: 33.3%;
+  }
+  .link {
+    width: 33.3%;
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      li {
+        text-decoration: none;
+      }
+    }
+  }
+  .logout {
+    width: 33.3%;
+    p {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.Container {
+  margin-top: 200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  .box {
+    width: 50%;
+    min-height: 400px;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
