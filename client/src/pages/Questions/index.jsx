@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./index.scss";
 import QuestionCard from "../../components/QuestionCard";
+import HomeNav from "../../components/HomeNav";
 function QuestionForm() {
   const [postData, setPostData] = useState([]);
   const [data, setData] = useState({ question: "", title: "", image: null });
@@ -9,7 +10,6 @@ function QuestionForm() {
     const getData = async () => {
       const result = await axios.get("/question/");
       setPostData(result.data);
-      // console.log(postData);
     };
     getData();
   }, [data]);
@@ -20,8 +20,9 @@ function QuestionForm() {
       const { question, image, title } = data;
       const formData = new FormData();
       formData.append("title", title);
-      formData.append("post", question);
+      formData.append("question", question);
       formData.append("image", image);
+      console.log(title, question);
 
       const result = await axios.post("/question/", formData, {
         headers: {
@@ -39,7 +40,8 @@ function QuestionForm() {
   };
 
   return (
-    <>
+    <div className="post-Container">
+      <HomeNav />
       <div className="form-container">
         <form
           className="post-form"
@@ -59,7 +61,7 @@ function QuestionForm() {
             name="post-text"
             placeholder="Write something..."
             value={data.question}
-            onChange={(e) => setData({ ...data, post: e.target.value })}
+            onChange={(e) => setData({ ...data, question: e.target.value })}
           />
           <input
             type="file"
@@ -73,7 +75,7 @@ function QuestionForm() {
       <div className="post">
         <QuestionCard data={postData} />
       </div>
-    </>
+    </div>
   );
 }
 

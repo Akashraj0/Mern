@@ -1,0 +1,44 @@
+.nav {
+  nav {
+    position: sticky;
+    height: 70px;
+    background-color: #000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .first {
+      width: 33.3%;
+    }
+    .second {
+      width: 33.3%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: 800;
+        font-size: 18px;
+        cursor: pointer !important;
+      }
+    }
+    .third {
+      width: 33.3%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      color: black;
+
+      a {
+        text-decoration: none;
+        padding: 10px;
+        color: white;
+        font-weight: 800;
+        font-size: 18px;
+        cursor: pointer !important;
+      }
+    }
+  }
+}

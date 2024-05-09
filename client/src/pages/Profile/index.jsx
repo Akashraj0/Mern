@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "../../components/UserContext";
-
+import HomeNav from "../../components/HomeNav";
 import "./index.scss";
 import UserPost from "../../components/UserPost";
 import UserQuestion from "../../components/UserQuestion";
@@ -22,41 +22,48 @@ const Profile = () => {
   }, []);
   // console.log(data[0]?.posts);
   return (
-    <div className="Profile">
-      <div className="nav-profile">
-        <ul>
-          <li
-            onClick={() => {
-              setPost(!post);
-              setQuestion(!question);
-            }}
-          >
-            Posts
-          </li>
-          <li
-            onClick={() => {
-              setQuestion(!question);
-              setPost(!post);
-            }}
-          >
-            Question
-          </li>
-          <li>About Me</li>
-        </ul>
-      </div>
-      <div>
-        {post ? (
-          <div className="post">
-            <h1>Post Posted</h1>
-            <UserPost data={data[0]?.posts} />
-          </div>
-        ) : null}
-        {question ? (
-          <div className="post">
-            <h1>Questions Asked</h1>
-            <UserQuestion data={data[0]?.questions} />
-          </div>
-        ) : null}
+    <div>
+      <HomeNav />
+      <div className="Profile">
+        <div className="nav-profile">
+          <ul>
+            <li
+              onClick={() => {
+                setPost(!post);
+                setQuestion(!question);
+              }}
+            >
+              Posts
+            </li>
+            <li
+              onClick={() => {
+                setQuestion(!question);
+                setPost(!post);
+              }}
+            >
+              Question
+            </li>
+            <li>Setting</li>
+          </ul>
+        </div>
+        <div className="nav-data">
+          {post ? (
+            <div>
+              <h1 style={{ textAlign: "center" }}>Post Posted</h1>
+              <div className="post">
+                <UserPost data={data[0]?.posts} />
+              </div>
+            </div>
+          ) : null}
+          {question ? (
+            <div>
+              <h1 style={{ textAlign: "center" }}>Questions Asked</h1>
+              <div className="post">
+                <UserQuestion data={data[0]?.questions} />
+              </div>
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );

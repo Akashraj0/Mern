@@ -1,18 +1,22 @@
 .login {
   width: 100%;
+  min-height: 100vh;
   display: flex;
-  flex-direction: row;
+  background-image: url("../../assets/view.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-items: center;
 }
 
 .container {
-  right: 85px;
   margin: 200px auto;
   padding: 60px;
-  background-color: #cf9fff;
+  background-color: whitesmoke;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
-  position: absolute;
+  position: relative;
+  right: 85px; /* Move the container to the right */
 }
 
 form {
@@ -93,12 +97,12 @@ input[type="checkbox"]:checked + .switch-label:before {
   transform: translateX(-100%);
 }
 
-.homepage {
-  position: absolute;
+.login-text {
+  // position: relative;
   text-align: center;
-  left: 110px;
+  // left: 50px;
   margin: 240px auto auto auto;
-  color: #000;
+  color: #fff;
 
   h1 {
     font-size: 2.5rem;
@@ -109,54 +113,5 @@ input[type="checkbox"]:checked + .switch-label:before {
     font-size: 1.2rem;
     font-weight: bolder;
     margin-bottom: 2rem;
-  }
-
-  .feature {
-    margin-bottom: 3rem;
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      background-color: #000;
-      color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s;
-
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-  }
-
-  .cta {
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .btn {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border: none;
-      background-color: #28a745;
-      color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s;
-
-      &:hover {
-        background-color: #218838;
-      }
-    }
   }
 }

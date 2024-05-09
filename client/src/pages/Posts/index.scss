@@ -1,11 +1,21 @@
+.post-Container {
+  margin: 0px;
+  padding: 0px;
+  // background-color: #c67eb5;
+}
 .form-container {
   display: block;
   flex-direction: column;
-  width: 50%;
+  width: 60%;
   margin: 50px auto;
   .post-form {
+    width: 100%;
+    padding: 30px;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+    // box-shadow: ;
+    border-radius: 3px;
 
     input[type="text"],
     input[type="file"] {
@@ -18,8 +28,8 @@
     button {
       padding: 8px 16px;
       margin-bottom: 20px;
-      background-color: white;
-      color: #000;
+      background-color: #000;
+      color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -27,8 +37,8 @@
 
       &:hover {
         // background-color: #003366;
-        background-color: #000;
-        color: #fff;
+        background-color: #4f4c4c;
+        color: #000;
       }
     }
   }
@@ -56,9 +66,8 @@
 
   .post-grid {
     background-color: #fff;
-    border: 5px solid;
+    // border: 5px solid;
     border-radius: 5px;
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 10px auto;
     max-width: 600px;
     padding: 20px;

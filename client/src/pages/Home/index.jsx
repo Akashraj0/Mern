@@ -1,24 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import HomeNav from "../../components/HomeNav";
 import "./index.scss";
 const Home = () => {
   return (
     <div className="Home">
-      <nav>
-        <div className="logo">
-          {/* <img src={Logo} style={{ width: "5%" }} /> */}
-        </div>
-        <div className="link">
-          <ul>
-            <li>Post</li>
-            <li>Questions</li>
-          </ul>
-        </div>
-        <div className="logout">
-          <p>LogOut</p>
-        </div>
-      </nav>
+      <HomeNav />
       <div className="Container">
+        <h1>
+          Ready to make your mark? Share your insights, experiences, and
+          questions! Join our community and start writing your post today. Your
+          voice matters, your ideas are valuable. Let&#39;s inspire, connect,
+          and learn from each other. Don&#39;t wait any longer—start writing
+          now!
+        </h1>
         <div className="feature">
           <h2>Forum Posts</h2>
           <p>

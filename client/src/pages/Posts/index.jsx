@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import HomeNav from "../../components/HomeNav";
 import "./index.scss";
 import PostCard from "../../components/PostCard";
 function PostForm() {
@@ -38,7 +39,8 @@ function PostForm() {
   };
 
   return (
-    <>
+    <div className="post-Container">
+      <HomeNav />
       <div className="form-container">
         <form
           className="post-form"
@@ -72,7 +74,7 @@ function PostForm() {
       <div className="post">
         <PostCard data={postData} />
       </div>
-    </>
+    </div>
   );
 }
 

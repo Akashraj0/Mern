@@ -29,8 +29,8 @@ const postSchema = mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-postSchema.index({ user: 1, like: 1 }, { unique: 1 });
-postSchema.index({ user: 1, dislike: 1 }, { unique: 1 });
+// postSchema.index({ user: 1, like: 1 }, { unique: 1 });
+// postSchema.index({ user: 1, dislike: 1 }, { unique: 1 });
 postSchema.virtual("comments", {
   ref: "comments",
   foreignField: "post",
